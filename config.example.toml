@@ -1,0 +1,30 @@
+[app]
+mode = "paper"
+state_path = "state/ledger.sqlite3"
+
+[bitquery]
+url = "https://streaming.bitquery.io/graphql"
+launch_query_file = "queries/launches.graphql"
+
+[paper]
+starting_cash_usd = "1000.00"
+fee_bps = 100
+slippage_bps = 100
+modeled_latency_ms = 750
+max_quote_age_seconds = 15
+max_trade_usd = "25.00"
+max_position_usd = "100.00"
+
+[risk]
+min_liquidity_usd = "5000"
+max_top_holder_pct = "20"
+max_age_seconds = 3600
+rugcheck_base_url = "https://api.rugcheck.xyz"
+
+# RugCheck's provider response is deliberately not guessed. Map only after inspecting
+# the raw report and the current provider response, e.g. liquidity_usd = "<verified.path>".
+[risk.field_map]
+
+[live]
+proposals_enabled = false
+execution_enabled = false

@@ -1,0 +1,19 @@
+query LatestSolanaTokenUsdTrade($token: String!) {
+  Solana(dataset: realtime, network: solana) {
+    DEXTradeByTokens(
+      where: {
+        Transaction: { Result: { Success: true } }
+        Trade: {
+          Currency: { MintAddress: { is: $token } }
+          PriceInUSD: { gt: 0 }
+        }
+      }
+      orderBy: { descending: Block_Time }
+      limit: { count: 1 }
+    ) {
+      Block { Time }
+      Transaction { Signature }
+      Trade { PriceInUSD Currency { MintAddress Symbol } }
+    }
+  }
+}

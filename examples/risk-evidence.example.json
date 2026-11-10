@@ -1,0 +1,10 @@
+{
+  "mint": "REPLACE_WITH_TOKEN_MINT",
+  "fetched_at": "2026-11-11T00:00:00Z",
+  "provider": "manual-or-normalized-provider-report",
+  "liquidity_usd": "15000",
+  "top_holder_pct": "12.5",
+  "mint_authority_active": false,
+  "freeze_authority_active": false,
+  "risk_flags": []
+}

@@ -1,0 +1,25 @@
+query RecentSolanaLaunches {
+  Solana(dataset: realtime, network: solana) {
+    Instructions(
+      where: {
+        Transaction: { Result: { Success: true } }
+        any: [
+          { Instruction: { Program: { Address: { is: "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P" }, Method: { in: ["create", "create_v2"] } } } }
+          { Instruction: { Program: { Address: { is: "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj" }, Method: { is: "initialize_v2" } } } }
+          { Instruction: { Program: { Address: { is: "dbcij3LWUppWqq96dh6gJWwBifmcGfLSB5D4DuSMaqN" }, Method: { is: "initialize_virtual_pool_with_spl_token" } } } }
+          { Instruction: { Program: { Address: { is: "HEAVENoP2qxoeuF8Dj2oT1GHEnu49U5mJYkdeC8BAX2o" }, Method: { is: "create_standard_liquidity_pool" } } } }
+          { Instruction: { Program: { Address: { is: "MoonCVVNZFSYkqNXP6bxHLPL6QQJiMagDL3qcqUQTrG" }, Method: { is: "tokenMint" } } } }
+        ]
+      }
+      limit: { count: 100 }
+      orderBy: { descending: Block_Slot }
+    ) {
+      Instruction {
+        Accounts { Address IsWritable Token { Mint Owner ProgramId } }
+        Program { AccountNames Address Method Name }
+      }
+      Transaction { Signature }
+      Block { Time Slot }
+    }
+  }
+}

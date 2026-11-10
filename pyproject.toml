@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solana-meme-paper-trader"
+version = "0.1.0"
+description = "Read-only Solana launch data, token-risk gates, and a local paper-trading ledger"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+authors = [{name = "Project contributors"}]
+dependencies = []
+
+[project.scripts]
+smp = "solana_meme_paper_trader.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
